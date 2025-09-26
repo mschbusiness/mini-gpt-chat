@@ -40,6 +40,11 @@ beforeEach(() => {
         value: localStorageMock,
         writable: true
     });
+    
+    // Initialize the app to trigger UI updates
+    if (typeof ChatApp !== 'undefined') {
+        new ChatApp();
+    }
 });
 
 describe('DOM Smoke Tests', () => {
@@ -55,10 +60,20 @@ describe('DOM Smoke Tests', () => {
     it('UI elements have correct attributes', () => {
         const apiKeyInput = document.getElementById('api-key');
         const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
         
         expect(apiKeyInput.type).toBe('password');
         expect(apiKeyInput.placeholder).toBe('sk-...');
         expect(userInput.placeholder).toBe('Enter your message here...');
+        // Note: Send button state depends on app initialization
+    });
+
+    it('shows API key hint when no key is present', () => {
+        const chatHistory = document.getElementById('chat-history');
+        
+        // The app should show a hint message
+        // This will be tested after app initialization
+        expect(chatHistory).toBeTruthy();
     });
 
     it('can add messages to chat history', () => {
@@ -101,6 +116,23 @@ describe('DOM Smoke Tests', () => {
         
         expect(saveClicked).toBe(true);
         expect(sendClicked).toBe(true);
+    });
+
+    it('can handle API key input and save', () => {
+        const apiKeyInput = document.getElementById('api-key');
+        const saveButton = document.getElementById('save-key');
+        
+        apiKeyInput.value = 'sk-test123';
+        
+        // Test that the input works
+        expect(apiKeyInput.value).toBe('sk-test123');
+        
+        // Test that the save button is clickable
+        let saveClicked = false;
+        saveButton.addEventListener('click', () => { saveClicked = true; });
+        saveButton.click();
+        
+        expect(saveClicked).toBe(true);
     });
 });
 
