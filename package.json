@@ -1,0 +1,12 @@
+{
+  "name": "mini-gpt-chat",
+  "version": "1.0.0",
+  "description": "Mini-GPT Chat Page - Simple HTML/CSS/JS implementation",
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "devDependencies": {
+    "vitest": "^1.0.0",
+    "happy-dom": "^12.0.0"
+  }
+}

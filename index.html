@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-GPT Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mini-GPT Chat</h1>
+        
+        <div class="api-key-section">
+            <label for="api-key">OpenAI API Key:</label>
+            <input type="password" id="api-key" placeholder="sk-...">
+            <button id="save-key">Save Key</button>
+        </div>
+        
+        <div class="chat-container">
+            <div id="chat-history" class="chat-history"></div>
+            
+            <div class="input-section">
+                <textarea id="user-input" placeholder="Enter your message here..."></textarea>
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
